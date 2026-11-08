@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths>
+    <cache-path name="kt_export" path="export/" />
+    <external-cache-path name="kt_export_external" path="export/" />
+    <files-path name="kt_files" path="exports/" />
+</paths>
