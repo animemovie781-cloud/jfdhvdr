@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths>
+    <cache-path name="bg_cache" path="bgremover/" />
+    <external-cache-path name="bg_external" path="bgremover/" />
+    <files-path name="bg_files" path="bgremover/" />
+</paths>
