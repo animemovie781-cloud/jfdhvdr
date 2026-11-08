@@ -1,0 +1,6 @@
+{
+  "name": "KineCut",
+  "description": "A powerful video editor with AI-powered features like auto-captions, background removal, and viral effects.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

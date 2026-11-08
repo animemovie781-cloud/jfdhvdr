@@ -4,6 +4,7 @@ plugins {
     id("org.jetbrains.kotlin.plugin.compose")
     id("org.jetbrains.kotlin.plugin.serialization")
     id("com.google.gms.google-services")
+    id("com.google.android.libraries.mapsplatform.secrets-gradle-plugin")
 }
 
 android {
@@ -11,7 +12,7 @@ android {
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.kinecut.app"
+        applicationId = "com.aistudio.videoeditor.xjvrbp"
         minSdk = 24
         targetSdk = 35
         versionCode = 396
@@ -29,6 +30,12 @@ android {
     val hasKeystore = keystoreFile != null && keystoreFile.exists()
 
     signingConfigs {
+        create("debugConfig") {
+            storeFile = file("${rootDir}/debug.keystore")
+            storePassword = "android"
+            keyAlias = "androiddebugkey"
+            keyPassword = "android"
+        }
         if (hasKeystore) {
             create("release") {
                 storeFile = keystoreFile
@@ -43,6 +50,7 @@ android {
         debug {
             isMinifyEnabled = false
             applicationIdSuffix = ""
+            signingConfig = signingConfigs.getByName("debugConfig")
         }
         release {
             // Kept off so the generated APK runs without extra R8 rules.
@@ -87,6 +95,11 @@ android {
             )
         }
     }
+}
+
+secrets {
+    propertiesFileName = ".env"
+    defaultPropertiesFileName = ".env.example"
 }
 
 dependencies {
@@ -164,6 +177,8 @@ dependencies {
     implementation("com.google.firebase:firebase-abt")
     implementation("com.google.firebase:firebase-datatransport")
     implementation("com.google.firebase:firebase-common-ktx")
+    // Generative AI
+    implementation("com.google.ai.client.generativeai:generativeai:0.9.0")
 
     // Google Ads
     implementation("com.google.android.gms:play-services-ads:23.1.0")
@@ -178,7 +193,4 @@ dependencies {
 
     // Coil for image loading
     implementation("io.coil-kt:coil-compose:2.6.0")
-
-    // Generative AI (Gemini)
-    implementation("com.google.ai.client.generativeai:generativeai:0.8.0")
 }

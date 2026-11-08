@@ -5,6 +5,7 @@ import android.media.MediaCodec
 import android.media.MediaExtractor
 import android.media.MediaFormat
 import android.media.MediaMuxer
+import android.media.MediaCodecInfo
 import com.kinecut.app.data.model.Blueprint
 import java.io.File
 
@@ -52,7 +53,7 @@ class ExportEngine(private val context: Context) {
                 setInteger(MediaFormat.KEY_I_FRAME_INTERVAL, 1)
                 setInteger(
                     MediaFormat.KEY_COLOR_FORMAT,
-                    MediaCodec.CodecProfileLevel.AVCProfileHigh
+                    MediaCodecInfo.CodecCapabilities.COLOR_FormatSurface
                 )
             }
 
